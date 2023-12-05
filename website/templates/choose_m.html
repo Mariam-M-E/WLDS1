@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Choose Mission - WLDS</title>
+    <style>
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        input[type="radio"] {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection System</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href={{ url_for('views.home') }}>Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>Choose Your Mission</h2>
+        <br>
+        <form method="post" onsubmit="return chooseMission()">
+            <label>
+                <input type="radio" name="mission" value="mission1" required>
+                Mission ID: M-021
+            </label>
+            <label>
+                <input type="radio" name="mission" value="mission2" required>
+                Mission ID: M-022
+            </label>
+            <label>
+                <input type="radio" name="mission" value="mission3" required>
+                Mission ID: M-023
+            </label>
+            <br>
+            <button type="submit">Start Detect</button>
+        </form>
+
+        <br><br>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Water Leakage Detection System</p>
+    </footer>
+
+    <script>
+        function chooseMission() {
+            const selectedMission = document.querySelector('input[name="mission"]:checked').value;
+            const form = document.forms[0];
+        
+            // Update the action attribute based on the selected mission
+            if (selectedMission === 'mission1') {
+                form.action = '{{ url_for("views.detect_leak1") }}';
+            } else if (selectedMission === 'mission2') {
+                form.action = '{{ url_for("views.detect_leak2") }}';
+            } else if (selectedMission === 'mission3') {
+                form.action = '{{ url_for("views.detect_leak3") }}';
+            }
+        
+            return true;
+        }
+    </script>
+    
+</body>
+</html>

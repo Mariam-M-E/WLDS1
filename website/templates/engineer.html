@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <title>Water Leakage Engineer</title>
+</head>
+<body>
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href={{ url_for('views.home') }}>Home</a></li>
+                <li><a href={{ url_for('views.start_new_mission') }}>Add New Mission</a></li>
+                <li><a href = {{ url_for('views.detect_leak') }}>Detect Leak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+            <h1 id="h1">Engineer Work History</h1>
+            <!-- Work History Table -->
+            <table class="work-history-table">
+                <thead>
+                    <tr>
+                        <th>Pipe Info</th>
+                        <th>Device Info</th>
+                        <th>Missions</th>
+                        <th>Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample data (replace with dynamic data from the server) -->
+                    <tr>
+                        <td>
+                            <div>Pipe Line ID: P-001</div>
+                            <div>Pipe Length: 2,500 m</div>
+                        </td>
+                        <td>
+                            <div>Device ID: D-001</div>
+                            <div>Device Location: City Center, Main Street</div>
+                        </td>
+                        <td>
+                            <div>Mission ID: M-0045</div>
+                            <div>Mission Status: Completed</div>
+                        </td>
+                        <td>
+                            <div>Report ID: R-2023-001</div>
+                            <div>Report Date: 2023-07-15</div>
+                            <div>Comment:  During the mission, the leakage detection system identified abnormal pressure drops in Pipe Line WPLD-P-001 located at the City Center on Main Street. Mission M-001 was initiated, and the system successfully completed its mission, detecting and reporting a leakage incident. Report ID R-2023-001 was generated on 2023-07-15, indicating the successful identification and reporting of the water pipeline leakage. Maintenance activities have been scheduled for prompt resolution.</div>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+<br><br>
+                <tbody>
+                    <!-- Sample data (replace with dynamic data from the server) -->
+                    <tr>
+                        <td>
+                            <div>Pipe Line ID: P-032</div>
+                            <div>Pipe Length: 3,500 m</div>
+                        </td>
+                        <td>
+                            <div>Device ID: D-002</div>
+                            <div>Device Location: Industrial Zone, North Sector</div>
+                        </td>
+                        <td>
+                            <div>Mission ID: M-044</div>
+                            <div>Mission Status: In Progress</div>
+                        </td>
+                        <td>
+                            <div>Report ID: R-2023-002</div>
+                            <div>Report Date: 2023-08-22</div>
+                            <div>Comment: Mission M-002 is currently in progress for Pipe Line P-002 in the Industrial Zone, North Sector. An unusual pressure drop has been detected, and the system is actively monitoring and analyzing data. A detailed report (R-2023-002) will be generated upon mission completion.</div>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+                <br><br>
+
+                <tbody>
+                    <!-- Sample data (replace with dynamic data from the server) -->
+                    <tr>
+                        <td>
+                            <div>Pipe Line ID: P-003</div>
+                            <div>Pipe Length: 4,200 m</div>
+                        </td>
+                        <td>
+                            <div>Device ID: D-003</div>
+                            <div>Device Location:  Residential Area, East District</div>
+                        </td>
+                        <td>
+                            <div>Mission ID: M-043</div>
+                            <div>Mission Status: Pending</div>
+                        </td>
+                        <td>
+                            <div>Report ID: R-2023-003</div>
+                            <div>Report Date: 2023-09-10</div>
+                            <div>Comment: An upcoming mission (M-003) is scheduled for Pipe Line P-003 in the Residential Area, East District. Initial data analysis indicates a potential issue, and the system is preparing to launch the mission for further investigation. A detailed report (R-2023-003) will be generated after the mission is completed on 2023-09-10.</div>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+    
+            
+<br><br><br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.1818056119!2d55.381464123541605!3d25.31985306140158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah!5e0!3m2!1sen!2sae!4v1701100842428!5m2!1sen!2sae" 
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+    
+        
+    </body>
+    
+    <br><br>
+
+    <footer>
+        <p>&copy; 2023 Water Leakage Detection System</p>
+    </footer>
+    <script>
+        type = "text/javascript"
+        src = {{ url_for('static', filename = 'script.js') }}
+    </script>
+</body>
+</html>

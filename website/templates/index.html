@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Water Leakage Detection System</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection System</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="#" onclick="document.getElementById('learn').scrollIntoView({ behavior: 'smooth' })">Learn more</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-content">
+        <h2>Welcome to our Water Leakage Detection System</h2>
+        <p>Explore our project and take control of water leakage issues.</p>
+
+        <nav id="nav">
+            <ul>
+                <li><a href="admin-login.html" class="button">Admin Login</a></li>
+                <br>
+                <li><a href={{ url_for('auth.login') }}   class="button">Engineer Login</a></li>
+            </ul>
+        </nav>
+<div id = "learn"><h4>About Us:</h4>
+
+    <p>Welcome to WLDS(Water Leak Detection System) by SofTech, where innovation meets sustainability in water management. We take pride in introducing our state-of-the-art Water Pipeline Leakage Detection System, a pioneering solution designed to revolutionize the way we conserve and manage our precious water resources.
+    
+    At SofTech, we recognize the critical importance of water conservation and the sustainable management of city water distribution systems. Our mission is to address the challenges posed by water wastage due to pipeline leaks by providing a highly effective and efficient solution.
+    
+    Our Vision:
+    To be at the forefront of water management technology, ensuring the responsible and proactive detection of pipeline leaks to contribute to a sustainable and resilient future.
+    
+    <h4>Our Mission:</h4>
+    To develop and implement cutting-edge technology that not only identifies water leakages rapidly but also integrates seamlessly into existing water infrastructure. We aim to minimize water wastage, enhance the reliability of city water distribution systems, and promote the responsible maintenance of water infrastructure.
+    
+    <h4>Key Features of Our System:</h4>
+    
+    <h5>Rapid and Accurate Leak Detection:</h5>
+    Our system employs advanced monitoring techniques to rapidly and accurately identify the location of water leakages within city water pipelines, particularly when significant losses are detected.
+    
+    <h5>Efficient Water Conservation:</h5>
+    By promptly addressing pipeline leaks, we contribute to minimizing water wastage and ensuring the conservation of this precious resource.
+    
+    <h5>Enhanced Sustainability and Reliability:</h5>
+    Our system is designed to enhance the overall sustainability and reliability of city water distribution systems, providing a proactive approach to leak detection.
+    
+    <h5>Seamless Communication and Coordination:</h5>
+    We facilitate seamless communication and data sharing among relevant authorities for a coordinated response when a substantial water loss is officially reported.
+    
+    <h5>Comprehensive Documentation:</h5>
+    We ensure comprehensive documentation, including system architecture diagrams and activation procedures, to illustrate the system's functionality and behavior, promoting transparency and understanding.
+    
+    <h4>Our Commitment:</h4>
+    At WLDS, we are committed to delivering a robust system with three core components: Water Pipeline Monitoring, Leak Detection and Reporting, and Infrastructure Maintenance Management. Our goal is to empower cities with intelligent and proactive solutions for sustainable water management.
+    
+    Join us in building a future where water is conserved, infrastructure is resilient, and communities thrive. WLDS - Innovating Water Management for a Sustainable Tomorrow.</p></div>
+        
+        <br><br><br><br>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Water Leakage Detection System</p>
+    </footer>
+    <script>
+        type = "text/javascript"
+        src = {{ url_for('static', filename = 'script.js') }}
+    </script>
+</body>
+</html>

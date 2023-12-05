@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Water Leak Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+
+        #leakAlert {
+            background-color: #90c6fa;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        #leakLocation,
+        #leakDetails {
+            font-weight: bold;
+        }
+
+        #detectLeakButton {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        #showOnMapButton {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            margin-top: 10px;
+        }
+        #viewResultsButton {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            margin-top: 10px;
+        }
+
+        #loadingSpinner {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #088ae0;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection System</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href={{ url_for('views.home') }}>Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div id="leakAlert">
+    <h2>Water Leak Detected!</h2>
+    <p>Location: <span id="leakLocation">ABU DHABI</span></p>
+    <p>Details: <span id="leakDetails">LEAKAGE DETECTED ON POINT D NEAR JUNCTION A</span></p>
+    <button id="showOnMapButton" onclick="showOnMap()">Show on Map</button>
+    <button id="viewResultsButton" style="display: none;" onclick="redirectToResults()">View Results</button>
+
+<script>
+    function redirectToResults() {
+        // Use window.location.href to redirect to the specified URL
+        window.location.href = "{{ url_for('views.detect_leak_result') }}";
+    }
+</script>
+</div>
+
+<button id="detectLeakButton" onclick="detectLeak()">Detect Leak</button>
+
+
+<div id="loadingSpinner"></div>
+
+<script>
+    // Simulate an initial leak with generic details
+    var initialLeakLocation = "ABU DHABI";
+    var initialLeakDetails = "LEAKAGE DETECTED ON POINT D NEAR JUNCTION A";
+
+    document.getElementById("leakLocation").textContent = initialLeakLocation;
+    document.getElementById("leakDetails").textContent = initialLeakDetails;
+    showLeakAlert();
+
+    function detectLeak() {
+        // Simulate a loading spinner during detection
+        showLoadingSpinner();
+
+        // Simulate an asynchronous operation (e.g., API call)
+        setTimeout(function() {
+            // Replace the following lines with actual logic to handle leak detection
+            // For simplicity, we're just alerting the user for now
+            alert("Leak detection initiated. Checking for leaks...");
+
+            // Update the UI with the specific leak information
+            var specificLeakLocation = "24°24'43.6\"N 54°28'28.8\"E"; // Replace with actual coordinates
+            var specificLeakDetails = "Pipe #54, Minor leak near valve #24"; // Replace with actual details
+
+            // Update the UI with the fetched information
+            document.getElementById("leakLocation").textContent = specificLeakLocation;
+            document.getElementById("leakDetails").textContent = specificLeakDetails;
+
+            // Show the leak alert
+            showLeakAlert();
+
+            // Show the "Show on Map" button
+            document.getElementById("showOnMapButton").style.display = "inline-block";
+            document.getElementById("viewResultsButton").style.display = "inline-block";
+
+            // Hide the loading spinner
+            hideLoadingSpinner();
+        }, 2000); // Simulate a 2-second delay for detection
+    }
+
+    function showOnMap() {
+        // Replace the following line with your map URL or embed code
+        var mapUrl = "https://www.google.com/maps?q=" + encodeURIComponent("24.412111, 54.474667");
+        window.open(mapUrl, "_blank");
+    }
+
+    function showLeakAlert() {
+        document.getElementById("leakAlert").style.display = "block";
+    }
+
+    function showLoadingSpinner() {
+        document.getElementById("loadingSpinner").style.display = "inline-block";
+        document.getElementById("detectLeakButton").style.display = "none";
+    }
+
+    function hideLoadingSpinner() {
+        document.getElementById("loadingSpinner").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

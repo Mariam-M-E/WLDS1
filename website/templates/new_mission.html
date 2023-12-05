@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>New Mission</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection System</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href={{ url_for('views.home') }}>Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <form method="POST" action="{{ url_for('views.start_new_mission') }}">
+            <div class="form-group">
+                <label for="pipe_id">Pipe ID:</label>
+                <select class="form-control" id="pipe_id" name="pipe_id" required>
+                    {% for pipe in available_pipes %}
+                        <option value="{{ pipe.id }}"> P-00{{pipe.id}} Pipe Length: {{ pipe.length }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="device_id">Device ID:</label>
+                <select class="form-control" id="device_id" name="device_id" required>
+                    {% for device in available_devices %}
+                        <option value="{{ device.id }}">D-00{{device.id}} Model: {{ device.model }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    
+            <button type="submit" class="button">Submit</button>
+        </form>
+
+
+        <br><br>
+<!-- Place this where you want to display the flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="flash-message alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endwith %}
+
+
+    </div>
+    <footer>
+        <p>&copy; 2023 Water Leakage Detection System</p>
+    </footer>
+    <script src={{ url_for('static', filename='script.js') }}></script>
+</body>
+</html>

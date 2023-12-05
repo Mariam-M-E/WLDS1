@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Water Leakage Detection System</title>
+    <style>
+        /* Center the entire Leak Results section */
+        section h4 {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="wlds logo">
+        <h1>Water Leakage Detection System</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href={{ url_for('views.home') }}>Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <h4 id = "h1">Leak Results:</h4>
+        <section>
+            <p>Mission ID: {{ result['mission_id'] }}</p>
+            <p>City: {{ result['city'] }}</p>
+            <p>Pipe ID: {{ result['pipe_id'] }}</p>
+            <p>Device ID: {{ result['device_id'] }}</p>
+            <p>Leak Detected: {{ "Yes" if result['leak_detected'] else "No" }}</p>
+    
+            {% if result['leak_detected'] %}
+                <p>Leak Sizes: {{ result['leak_sizes'] }}</p>
+                <p>Leak Locations: {{ result['leak_locations'] }}</p>
+                <p>Water Loss Estimates: {{ result['water_loss_estimates'] }}</p>
+            {% endif %}
+        </section>
+    </div>
+    <br><br><br>
+
+    <footer>
+        <p>&copy; 2023 Water Leakage Detection System</p>
+    </footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
